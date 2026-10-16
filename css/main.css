@@ -1380,7 +1380,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #7d0928;
+  background: #ff6a65;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2725,4 +2725,13 @@ header.header {
   .sidebar-active .footer-fixed {
     left: 320px;
   }
+}
+body {
+  background: url("/images/shinchan_bg.jpg") no-repeat fixed center center;
+  background-size: cover;
+}
+.container {
+  background: rgba(255,255,255,0.88);
+  border-radius: 8px;
+  padding: 0 20px;
 }
