@@ -193,7 +193,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-19 18:17:27" itemprop="dateModified" datetime="2026-10-19T18:17:27+08:00">2026-10-19</time>
+      <time title="修改时间：2026-10-19 18:45:21" itemprop="dateModified" datetime="2026-10-19T18:45:21+08:00">2026-10-19</time>
     </span>
 
   
@@ -220,11 +220,11 @@
 </thead>
 <tbody><tr>
 <td><code>$_POST</code> &#x2F; <code>$_GET</code>（表单）</td>
-<td><code>requests.post(url, data={...})</code></td>
+<td><code>requests.post(&quot;url&quot;, data={...})</code></td>
 </tr>
 <tr>
 <td><code>json_decode(...)</code> &#x2F; 文档写”提交 JSON”</td>
-<td><code>requests.post(url, json={...})</code></td>
+<td><code>requests.post(&quot;url&quot;, json={...})</code></td>
 </tr>
 </tbody></table>
 <h2 id="为什么-data-行、json-不行？"><a href="#为什么-data-行、json-不行？" class="headerlink" title="为什么 data 行、json 不行？"></a>为什么 data 行、json 不行？</h2><p>PHP 的 <code>$_POST</code> 数组<strong>只认表单格式</strong>（<code>application/x-www-form-urlencoded</code>）。<br>传 JSON 时 <code>Content-Type</code> 是 <code>application/json</code>，PHP 不解析，<code>$_POST</code> 是空的，条件永远不成立。</p>
@@ -238,9 +238,10 @@
 
 <p>按下enter键得到flag</p>
 <h2 id="书写规范"><a href="#书写规范" class="headerlink" title="书写规范"></a>书写规范</h2><ul>
-<li>GET:requests.get(“网址+参数”)</li>
-<li>POST:requests.post(“网址”,data(or json)&#x3D;{“key”:”value”})</li>
+<li>GET:requests.get(“url?key&#x3D;value”)</li>
+<li>POST:requests.post(“url”,data(or json)&#x3D;{“key”:”value”})</li>
 </ul>
+<p>注：GET可以直接在网址后输入”?key&#x3D;value”</p>
 
       
     </div>
