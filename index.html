@@ -187,7 +187,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2026-10-22 10:25:15 / 修改时间：11:45:17" itemprop="dateCreated datePublished" datetime="2026-10-22T10:25:15+08:00">2026-10-22</time>
+      <time title="创建时间：2026-10-22 10:25:15 / 修改时间：22:09:57" itemprop="dateCreated datePublished" datetime="2026-10-22T10:25:15+08:00">2026-10-22</time>
     </span>
 
   
@@ -226,6 +226,21 @@
 <li>⭐在Host: example.com这一行后面另起一行，增加请求头：<code>Content-Type: application/x-www-form-urlencoded</code>（告诉服务器这是表单格式数据）</li>
 </ul>
 <p>注：右侧Response中识别响应：<code>200 OK</code> 代表请求成功，右侧 Render 可以预览网页，Raw 查看源码</p>
+<h2 id="Proxy-的-Intercept-拦截"><a href="#Proxy-的-Intercept-拦截" class="headerlink" title="Proxy 的 Intercept 拦截"></a>Proxy 的 Intercept 拦截</h2><ul>
+<li>打开Proxy模块中的intercept,打开拦截总开关（intercept on）</li>
+<li>在Burp自带浏览器中访问example.com</li>
+<li>发现浏览器会转圈卡住，这是因为请求被拦住了</li>
+</ul>
+<p><img src="/images/%E7%AE%80%E5%8D%95%E6%8B%A6%E6%88%AA.png" alt="图片说明"></p>
+<ul>
+<li>这时切回Burp就可以看到被拦到的GET请求</li>
+<li>在拦截界面可以直接修改请求行（在GET &#x2F; 后面尝试加上?id&#x3D;666）</li>
+<li>之后点击Forward放行，在浏览器就可以看到界面访问</li>
+</ul>
+<p>注：<a target="_blank" rel="noopener" href="https://example.com/">example.com</a>本身<strong>不会识别我们加的？id&#x3D;666 这个参数</strong>，它只是一个静态示例页面，不管你后面加什么参数，它都只会返回这一段固定提示文字：“该域名仅用于文档示例……”，所以页面样子没变，不是操作失误</p>
+<ul>
+<li>拦截到数据包之后，发给 Repeater 的方法：在请求内容区域右键 → Send to Repeater<br>之后可以进行调试，反复测试</li>
+</ul>
 
       
     </div>
