@@ -30,8 +30,17 @@
 <meta property="og:image" content="https://21xing.github.io/images/%E7%AE%80%E5%8D%95%E6%8A%93%E5%8C%85.png">
 <meta property="og:image" content="https://21xing.github.io/images/%E7%AE%80%E5%8D%95%E4%BF%AE%E6%94%B9GET.png">
 <meta property="og:image" content="https://21xing.github.io/images/%E7%AE%80%E5%8D%95%E6%8B%A6%E6%88%AA.png">
+<meta property="og:image" content="https://21xing.github.io/images/Decoder.png">
+<meta property="og:image" content="https://21xing.github.io/images/%E8%B6%8A%E6%9D%831%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82.png">
+<meta property="og:image" content="https://21xing.github.io/images/%E8%B6%8A%E6%9D%831%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2.png">
+<meta property="og:image" content="https://21xing.github.io/images/%E8%B6%8A%E6%9D%831.png">
+<meta property="og:image" content="https://21xing.github.io/images/%E8%B6%8A%E6%9D%831Api.png">
+<meta property="og:image" content="https://21xing.github.io/images/%E8%B6%8A%E6%9D%832%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82.png">
+<meta property="og:image" content="https://21xing.github.io/images/%E8%B6%8A%E6%9D%832%E6%8B%BF%E5%88%B0%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90.png">
+<meta property="og:image" content="https://21xing.github.io/images/%E8%B6%8A%E6%9D%832%E7%AE%A1%E7%90%86%E5%91%98%E7%95%8C%E9%9D%A2.png">
+<meta property="og:image" content="https://21xing.github.io/images/%E8%B6%8A%E6%9D%832%E6%88%90%E5%8A%9F%E5%88%A0%E9%99%A4.png">
 <meta property="article:published_time" content="2026-10-22T02:25:15.000Z">
-<meta property="article:modified_time" content="2026-10-22T14:09:57.039Z">
+<meta property="article:modified_time" content="2026-10-30T15:16:49.018Z">
 <meta property="article:author" content="21Xing">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Web">
@@ -122,7 +131,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Burp%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">Burp入门笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy-%E5%9F%BA%E7%A1%80%E6%8A%93%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">Proxy 基础抓包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%85%E9%87%8C%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据包里可以看到的内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repeater%EF%BC%88%E9%87%8D%E5%8F%91%E5%99%A8%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">Repeater（重发器）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80-GET-%E5%8C%85%E4%BF%AE%E6%94%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础 GET 包修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%BD%AC-POST-%E8%A1%A8%E5%8D%95%E5%8C%85%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">GET 转 POST 表单包：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy-%E7%9A%84-Intercept-%E6%8B%A6%E6%88%AA"><span class="nav-number">1.3.</span> <span class="nav-text">Proxy 的 Intercept 拦截</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Burp%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">Burp入门笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy-%E5%9F%BA%E7%A1%80%E6%8A%93%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">Proxy 基础抓包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%85%E9%87%8C%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据包里可以看到的内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repeater%EF%BC%88%E9%87%8D%E5%8F%91%E5%99%A8%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">Repeater（重发器）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80-GET-%E5%8C%85%E4%BF%AE%E6%94%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础 GET 包修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%BD%AC-POST-%E8%A1%A8%E5%8D%95%E5%8C%85%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">GET 转 POST 表单包：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET-POST-%E4%BA%92%E8%BD%AC%E7%9A%84%E7%94%A8%E5%A4%84%EF%BC%9A"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">GET&#x2F;POST 互转的用处：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF1%EF%BC%9A%E5%8F%91%E8%BF%87%E5%8E%BB%E6%B2%A1%E5%8F%8D%E5%BA%94"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">场景1：发过去没反应</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF2%EF%BC%9A%E8%AF%B7%E6%B1%82%E8%A2%AB%E6%8B%A6%E4%BA%86"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">场景2：请求被拦了</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF3%EF%BC%9A%E5%8F%82%E6%95%B0%E5%A4%AA%E9%95%BF-URL-%E6%94%BE%E4%B8%8D%E4%B8%8B"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text">场景3：参数太长 URL 放不下</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy-%E7%9A%84-Intercept-%E6%8B%A6%E6%88%AA"><span class="nav-number">1.3.</span> <span class="nav-text">Proxy 的 Intercept 拦截</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Burpsuite%E4%B9%8BDeepseek%E6%95%99%E5%AD%A6"><span class="nav-number">2.</span> <span class="nav-text">Burpsuite之Deepseek教学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Decoder"><span class="nav-number">2.1.</span> <span class="nav-text">Decoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B6%8A%E6%9D%83%EF%BC%88IDOR%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">越权（IDOR）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%8A%E6%9D%83%E5%AE%9E%E9%AA%8C1%EF%BC%88%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">越权实验1（水平越权）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%8A%E6%9D%83%E5%AE%9E%E9%AA%8C2%EF%BC%88%E5%9E%82%E7%9B%B4%E8%B6%8A%E6%9D%83%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">越权实验2（垂直越权）</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -195,9 +204,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-10-22 10:25:15 / 修改时间：22:09:57" itemprop="dateCreated datePublished" datetime="2026-10-22T10:25:15+08:00">2026-10-22</time>
+      <time title="创建时间：2026-10-22 10:25:15" itemprop="dateCreated datePublished" datetime="2026-10-22T10:25:15+08:00">2026-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-30 23:16:49" itemprop="dateModified" datetime="2026-10-30T23:16:49+08:00">2026-10-30</time>
     </span>
 
   
@@ -228,13 +243,24 @@
 <li>响应体：网页的 HTML 源码，就是页面真正展示的内容，可以切换 Render 标签直接预览网页效果<br><img src="/images/%E7%AE%80%E5%8D%95%E6%8A%93%E5%8C%85.png" alt="图片说明"></li>
 </ul>
 <h2 id="Repeater（重发器）"><a href="#Repeater（重发器）" class="headerlink" title="Repeater（重发器）"></a>Repeater（重发器）</h2><h3 id="基础-GET-包修改"><a href="#基础-GET-包修改" class="headerlink" title="基础 GET 包修改"></a>基础 GET 包修改</h3><p>上图中直接右击<a target="_blank" rel="noopener" href="http://example.com/">http://example.com</a> GET &#x2F;这一行<br>选择Send to Repeater<br>切换到Repeater模块，看到：<br><img src="/images/%E7%AE%80%E5%8D%95%E4%BF%AE%E6%94%B9GET.png" alt="图片说明"><br>在这里可以对GET请求进行修改：在 URL 上加 <code>?id=1</code>、多参数 <code>?id=2&amp;name=test</code><br>点击send后观察右边响应界面的变化</p>
-<h3 id="GET-转-POST-表单包："><a href="#GET-转-POST-表单包：" class="headerlink" title="GET 转 POST 表单包："></a>GET 转 POST 表单包：</h3><ul>
+<h3 id="GET-转-POST-表单包："><a href="#GET-转-POST-表单包：" class="headerlink" title="GET 转 POST 表单包："></a>GET 转 POST 表单包：</h3><p><em><strong>有个简洁方法：右键请求区域空白处 → Change request method</strong></em></p>
+<p>接下来是手动操作方式：</p>
+<ul>
 <li>请求方法 GET → POST</li>
 <li>移除 URL 后面的所有参数</li>
 <li>在请求头末尾<strong>空一行</strong>，在空行后填写参数（请求体）</li>
 <li>⭐在Host: example.com这一行后面另起一行，增加请求头：<code>Content-Type: application/x-www-form-urlencoded</code>（告诉服务器这是表单格式数据）</li>
 </ul>
 <p>注：右侧Response中识别响应：<code>200 OK</code> 代表请求成功，右侧 Render 可以预览网页，Raw 查看源码</p>
+<h4 id="GET-POST-互转的用处："><a href="#GET-POST-互转的用处：" class="headerlink" title="GET&#x2F;POST 互转的用处："></a>GET&#x2F;POST 互转的用处：</h4><ol>
+<li>绕过防护：GET 被 WAF 拦截时，转成 POST 可能绕过</li>
+<li>适配接口：后端只收 POST，GET 发过去无效，转 POST 就能用</li>
+<li>隐藏参数：POST 参数在 Body 里，URL 上看不见（不显示在浏览器地址栏和日志）</li>
+</ol>
+<h5 id="场景1：发过去没反应"><a href="#场景1：发过去没反应" class="headerlink" title="场景1：发过去没反应"></a>场景1：发过去没反应</h5><p>你在 Repeater 改 ?id&#x3D;2，Go 了好几次，响应永远返回你自己的数据。</p>
+<p>→ 可能后端只收 POST<br>→ 右键转 POST，再 Go<br>→ 返回了别人的 → 越权成了</p>
+<h5 id="场景2：请求被拦了"><a href="#场景2：请求被拦了" class="headerlink" title="场景2：请求被拦了"></a>场景2：请求被拦了</h5><p>GET &#x2F;search?q&#x3D;<script>alert(1)</script><br>→ 返回 “非法请求” 或 403<br>→ 转 POST<br>→ POST &#x2F;search<br>Body: q&#x3D;<script>alert(1)</script><br>→ 可能就过了</p>
+<h5 id="场景3：参数太长-URL-放不下"><a href="#场景3：参数太长-URL-放不下" class="headerlink" title="场景3：参数太长 URL 放不下"></a>场景3：参数太长 URL 放不下</h5><p>GET &#x2F;report?data&#x3D;超长一大串…（URL 有长度限制）<br>→ 截断了，发不完整<br>→ 转 POST，丢 Body 里<br>→ 多长都行</p>
 <h2 id="Proxy-的-Intercept-拦截"><a href="#Proxy-的-Intercept-拦截" class="headerlink" title="Proxy 的 Intercept 拦截"></a>Proxy 的 Intercept 拦截</h2><ul>
 <li>打开Proxy模块中的intercept,打开拦截总开关（intercept on）</li>
 <li>在Burp自带浏览器中访问example.com</li>
@@ -248,8 +274,68 @@
 </ul>
 <p>注：<a target="_blank" rel="noopener" href="https://example.com/">example.com</a>本身<strong>不会识别我们加的？id&#x3D;666 这个参数</strong>，它只是一个静态示例页面，不管你后面加什么参数，它都只会返回这一段固定提示文字：“该域名仅用于文档示例……”，所以页面样子没变，不是操作失误</p>
 <ul>
-<li>拦截到数据包之后，发给 Repeater 的方法：在请求内容区域右键 → Send to Repeater<br>之后可以进行调试，反复测试</li>
+<li>拦截到数据包之后，发给 Repeater 的方法：在请求内容区域右键 → Send to Repeater ，之后可以进行调试，反复测试</li>
 </ul>
+<h1 id="Burpsuite之Deepseek教学"><a href="#Burpsuite之Deepseek教学" class="headerlink" title="Burpsuite之Deepseek教学"></a>Burpsuite之Deepseek教学</h1><ul>
+<li>哈哈哈，也是吃上细糠了，用上Deepseek了</li>
+</ul>
+<p>环境配置什么的就不说了，在浏览器下载proxy插件</p>
+<ul>
+<li>代理：FoxyProxy，127.0.0.1:8080</li>
+<li>证书：<a target="_blank" rel="noopener" href="http://burpsuite/">http://burpsuite</a> 下载，装到”受信任的根证书颁发机构”</li>
+</ul>
+<h2 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h2><p>这里是打开了一个网页后，在Reaperter发现参数很长看不懂说的是什么<br>可以选中参数传到Decoder，然后进行解码</p>
+<ul>
+<li>URL编码 → Decode as URL</li>
+<li>中文&#x2F;JSON → Encode as URL</li>
+</ul>
+<p><img src="/images/Decoder.png" alt="图片说明"></p>
+<p>如图所示直接在Decoder as 中选择“URL”</p>
+<h2 id="越权（IDOR）"><a href="#越权（IDOR）" class="headerlink" title="越权（IDOR）"></a>越权（IDOR）</h2><p>简介：一句话：改ID就能看别人的数据，服务器没验证”你是不是这个ID的主人”。</p>
+<p>类型：</p>
+<ul>
+<li>水平越权：A看B的数据（改id&#x3D;1为id&#x3D;2）</li>
+<li>垂直越权：普通用户干管理员的事（改role&#x3D;user为role&#x3D;admin）</li>
+</ul>
+<p>测试三步：</p>
+<ol>
+<li>History找 ?id&#x3D; &#x2F; user_id&#x3D; &#x2F; role&#x3D; 等参数</li>
+<li>Repeater改值</li>
+<li>响应里有别人数据 → 漏洞</li>
+</ol>
+<p>参数可能在：URL、POST Body、Cookie、Header 都要查</p>
+<h3 id="越权实验1（水平越权）"><a href="#越权实验1（水平越权）" class="headerlink" title="越权实验1（水平越权）"></a>越权实验1（水平越权）</h3><p>路径：<a target="_blank" rel="noopener" href="https://portswigger.net/">text</a><br>Web Security Academy&gt;Access control&gt;Lab：: User ID controlled by request parameter</p>
+<p><img src="/images/%E8%B6%8A%E6%9D%831%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82.png" alt="图片说明"></p>
+<p>打开的界面是</p>
+<p><img src="/images/%E8%B6%8A%E6%9D%831%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2.png" alt="图片说明"></p>
+<p>实验室页面上直接用 wiener:peter 登录，然后在 HTTP History 里找带 id&#x3D; 的请求，找到后 Send to Repeater</p>
+<p><img src="/images/%E8%B6%8A%E6%9D%831.png" alt="图片说明"></p>
+<p>找到id&#x3D;wiener，将他改成carlos,点击send</p>
+<p><img src="/images/%E8%B6%8A%E6%9D%831Api.png" alt="图片说明"></p>
+<p>找到Api提交即可</p>
+<ul>
+<li>看到这些	就是用户标识<br>id&#x3D; ，uid&#x3D; ，user_id&#x3D; ，userid&#x3D;	用户ID<br>order_id&#x3D; ，order&#x3D;	订单号<br>role&#x3D; ，admin&#x3D;	角色<br>file&#x3D; ，path&#x3D;	文件路径</li>
+</ul>
+<h3 id="越权实验2（垂直越权）"><a href="#越权实验2（垂直越权）" class="headerlink" title="越权实验2（垂直越权）"></a>越权实验2（垂直越权）</h3><p>路径：<a target="_blank" rel="noopener" href="https://portswigger.net/">text</a><br>Web Security Academy&gt;Access control&gt;Lab: User role controlled by request parameter</p>
+<p><img src="/images/%E8%B6%8A%E6%9D%832%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82.png" alt="图片说明"></p>
+<ul>
+<li>实验目标：利用角色越权删除 carlos 用户。</li>
+</ul>
+<p><img src="/images/%E8%B6%8A%E6%9D%832%E6%8B%BF%E5%88%B0%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90.png" alt="图片说明"></p>
+<p>如图将admin&#x3D;false改成admin&#x3D;true，点击send得到管理员权限</p>
+<ul>
+<li><a href="/admin">Admin panel</a> — 管理员面板链接出来了。Admin&#x3D;false 改 Admin&#x3D;true，你就成了管理员。</li>
+</ul>
+<p>真正访问 Admin panel 并删除 carlos：</p>
+<ul>
+<li>法1（这里用到的）：在 Repeater 里把 URL 改成 GET &#x2F;admin HTTP&#x2F;2，保持 Cookie 里 Admin&#x3D;true，Go。看看能不能访问管理页。</li>
+<li>法2：在浏览器里刷新页面，但 Burp 里 Intercept 先开着，拦截后把 Admin&#x3D;false 改成 true 再 Forward。但其实浏览器已经设了 Admin&#x3D;false 的 Cookie，可能需要直接在 Repeater 中操作，或者直接在整个浏览器会话中把 Cookie 改掉。</li>
+</ul>
+<p><img src="/images/%E8%B6%8A%E6%9D%832%E7%AE%A1%E7%90%86%E5%91%98%E7%95%8C%E9%9D%A2.png" alt="图片说明"></p>
+<p>这样就到管理员面板，看到两个用户都有 Delete 按钮。</p>
+<p>最后一步：在 Repeater 里把 URL 改成：GET &#x2F;admin&#x2F;delete?username&#x3D;carlos HTTP&#x2F;2<br>点击send</p>
+<p><img src="/images/%E8%B6%8A%E6%9D%832%E6%88%90%E5%8A%9F%E5%88%A0%E9%99%A4.png" alt="图片说明"></p>
+<p>发现页面无法访问即为成功</p>
 
     </div>
 
