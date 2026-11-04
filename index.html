@@ -193,7 +193,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-30 23:16:49" itemprop="dateModified" datetime="2026-10-30T23:16:49+08:00">2026-10-30</time>
+      <time title="修改时间：2026-11-04 22:12:41" itemprop="dateModified" datetime="2026-11-04T22:12:41+08:00">2026-11-04</time>
     </span>
 
   
@@ -308,7 +308,7 @@
 <ul>
 <li><a href="/admin">Admin panel</a> — 管理员面板链接出来了。Admin&#x3D;false 改 Admin&#x3D;true，你就成了管理员。</li>
 </ul>
-<p>真正访问 Admin panel 并删除 carlos：</p>
+<p>真正访问 Admin panel（管理员界面） 并删除 carlos：</p>
 <ul>
 <li>法1（这里用到的）：在 Repeater 里把 URL 改成 GET &#x2F;admin HTTP&#x2F;2，保持 Cookie 里 Admin&#x3D;true，Go。看看能不能访问管理页。</li>
 <li>法2：在浏览器里刷新页面，但 Burp 里 Intercept 先开着，拦截后把 Admin&#x3D;false 改成 true 再 Forward。但其实浏览器已经设了 Admin&#x3D;false 的 Cookie，可能需要直接在 Repeater 中操作，或者直接在整个浏览器会话中把 Cookie 改掉。</li>
@@ -318,6 +318,107 @@
 <p>最后一步：在 Repeater 里把 URL 改成：GET &#x2F;admin&#x2F;delete?username&#x3D;carlos HTTP&#x2F;2<br>点击send</p>
 <p><img src="/images/%E8%B6%8A%E6%9D%832%E6%88%90%E5%8A%9F%E5%88%A0%E9%99%A4.png" alt="图片说明"></p>
 <p>发现页面无法访问即为成功</p>
+<h2 id="Cookie-基础总结"><a href="#Cookie-基础总结" class="headerlink" title="Cookie 基础总结"></a>Cookie 基础总结</h2><ol>
+<li>是什么：服务器塞给你的身份纸条，浏览器每次请求自动带</li>
+<li>在哪看：Burp 请求头里的 Cookie: 那一行</li>
+<li>格式：key&#x3D;value; key&#x3D;value 多个用 ; 隔开</li>
+<li>三种类型：<ul>
+<li>Session ID（session&#x3D;abc123）→ 不能随便改，服务器有记录</li>
+<li>权限标志（Admin&#x3D;false）→ 改了可能直接提权</li>
+<li>用户标识（uid&#x3D;100）→ 改了看别人数据（越权）</li>
+</ul>
+</li>
+<li>怎么改：Repeater 里改 Cookie 值 → Go</li>
+<li>实战：Admin&#x3D;false → Admin&#x3D;true 拿到管理员权限</li>
+</ol>
+<h2 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a>爆破</h2><h3 id="爆破实验1"><a href="#爆破实验1" class="headerlink" title="爆破实验1"></a>爆破实验1</h3><p>路径：Web Security Academy&gt;Authentication vulnerabilities&gt;Password-based&gt;Lab: Username enumeration via different responses</p>
+<p><img src="/images/%E7%88%86%E7%A0%B41%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82.png" alt="图片说明"></p>
+<ul>
+<li>这里的Candidate usernames（候选人用户名）和Candidate passwords（候选密码）等会要用到</li>
+</ul>
+<p>接下来还是点击进入实验室，然后注册账户，用wiener：peter点击登录后会发现报错</p>
+<p>在Burp里找到&#x2F;login 的 POST  <em><strong>（登陆一定是POST，关于这个等会记个小笔记）</strong></em></p>
+<p><img src="/images/%E7%88%86%E7%A0%B41%E6%89%BElogin%E7%9A%84POST.png" alt="图片说明"></p>
+<p>右击点击Send to Intruder</p>
+<p><img src="/images/%E7%88%86%E7%A0%B41Intruder%E7%95%8C%E9%9D%A2.png" alt="图片说明"></p>
+<p>接下来点 Positions 子标签（Auto&amp;），你会看到请求内容，username 和 password 的值被 § 符号包着。</p>
+<ul>
+<li>点右边的 Clear § 清除所有位置</li>
+<li>只选中 wiener（username 的值），点 Add §</li>
+<li>结果：username&#x3D;§wiener§&amp;password&#x3D;peter<br><em>如图所示</em>：</li>
+</ul>
+<p><img src="/images/%E7%88%86%E7%A0%B41%E4%B9%8B&.png" alt="图片说明"></p>
+<p>接下来就是复制一下候选人用户名，然后点击Payloads中的”payload configuration”中的”Paste”粘贴<br>然后直接点击Start attack进行爆破</p>
+<p><img src="/images/%E7%88%86%E7%A0%B41%E7%88%86%E7%A0%B4%E7%BB%93%E6%9E%9C.png" alt="图片说明"></p>
+<p>这里发现ad的”length”不一样为”3354”故为正确用户名</p>
+<h4 id="正确用户名判断依据"><a href="#正确用户名判断依据" class="headerlink" title="正确用户名判断依据"></a>正确用户名判断依据</h4><p>“Invalid username”     → 14 个字符<br>“Incorrect password”   → 18 个字符<br>差了 4 个字符，响应长度就差了 2 字节，所以 3352 vs 3354，有效用户名比无效的多几个字节。</p>
+<ul>
+<li>这招叫 Username enumeration（用户名枚举），漏洞根因：服务器告诉你”这个用户存在但密码错了” vs “这个用户不存在”。攻击者就能通过长度差异筛出有效用户名，然后再爆破密码。</li>
+</ul>
+<p>接下来还是重复刚才的步骤Positions → Clear § → 选中 peter → Add §</p>
+<p>结果：username&#x3D;ad&amp;password&#x3D;§peter§</p>
+<p>然后复制候选密码点”Paste”,点击Start attack进行爆破</p>
+<p><img src="/images/%E7%88%86%E7%A0%B41%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E7%BB%93%E6%9E%9C.png" alt="图片说明"></p>
+<p>发现”zxcvbnm”长度”184”与其他”length”差别最大，故为正确密码</p>
+<h4 id="正确密码判断依据"><a href="#正确密码判断依据" class="headerlink" title="正确密码判断依据"></a>正确密码判断依据</h4><p>看长度的时候，只看最极端的那个</p>
+<ul>
+<li>3354 → 正常密码错误页面</li>
+<li>3441 → 可能是某个特殊字符导致的异常</li>
+<li>184  → 登录成功（几乎空响应）（302 重定向，响应很短）</li>
+</ul>
+<p>最终找到正确用户名和密码后再去”My account”登录就完成了</p>
+<h4 id="小笔记（为什么找到-login-的-POST）"><a href="#小笔记（为什么找到-login-的-POST）" class="headerlink" title="小笔记（为什么找到&#x2F;login 的 POST）"></a>小笔记（为什么找到&#x2F;login 的 POST）</h4><p>因为登录是发送用户名和密码的请求。</p>
+<ul>
+<li>GET  &#x2F;login     → 打开登录页面（没参数）</li>
+<li>POST &#x2F;login     → 提交用户名密码到服务器验证<br>你抓包时访问登录页会先看到 GET，但真正需要爆破的是 POST，因为用户名字典要填进 username&#x3D; 的位置，改完发给服务器验证。</li>
+</ul>
+<p>如何判断用哪个？</p>
+<table>
+<thead>
+<tr>
+<th align="left">你看到什么</th>
+<th align="left">做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">表单提交、登录、注册、搜索</td>
+<td align="left">找 POST，参数在 Body 里</td>
+</tr>
+<tr>
+<td align="left">URL 带 <code>?id=1&amp;page=2</code></td>
+<td align="left">找 GET，参数在 URL 里</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>登录一定是 POST（用户名密码不能暴露在 URL 里），所以要爆破登录就找 <code>POST /login</code>。</p>
+</blockquote>
+<h3 id="爆破试验2"><a href="#爆破试验2" class="headerlink" title="爆破试验2"></a>爆破试验2</h3><p>路径：Web Security Academy&gt;Authentication vulnerabilitie&gt;Other mechanisms&gt;Lab: Password reset poisoning via middleware</p>
+<p><img src="/images/%E7%88%86%E7%A0%B42%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82.png" alt="图片说明"></p>
+<p>这里是让找到用户carlos的密码并登陆其账户<br>我们先进入实验室登陆我们自己的账户，登陆进去会出现以下画面</p>
+<p><img src="/images/%E7%88%86%E7%A0%B42%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81.png" alt="图片说明"></p>
+<p>这里先输入我们自己账号的密码peter，修改密码为123，再次确认abc</p>
+<h4 id="两次输入密码不同原因解释："><a href="#两次输入密码不同原因解释：" class="headerlink" title="两次输入密码不同原因解释："></a>两次输入密码不同原因解释：</h4><ul>
+<li>这一步的作用是借这个操作抓到请求格式，即抓到*<em><strong>POST &#x2F;my-account&#x2F;change-password</strong></em>。抓到后把用户名改成 carlos，请求结构一样，在Intruder中 一个一个爆破试密码就行</li>
+<li>如果两次输入密码相同那么密码就被更改，之后你会被登出（<em>登录状态失效了，浏览器会自动跳转到登录页面，让你重新输入用户名和密码</em>），之后session就废了（<em>请求头里那行 Cookie: session&#x3D;xxx 失效了</em>），这时你再抓到的包已经失效了，即无法再进行爆破</li>
+</ul>
+<p><img src="/images/%E7%88%86%E7%A0%B42%E6%8A%93%E5%8C%85.png" alt="图片说明"></p>
+<p>这里抓到包之后发送到Intruder，修改请求体为username&#x3D;carlos&amp;current-password&#x3D;peter&amp;new-password-1&#x3D;123&amp;new-password-2&#x3D;abc（即将wiener修改为carlos）<br>然后进行以下操作：</p>
+<ol>
+<li>往下滑，找到 <strong>Grep - Match</strong></li>
+<li>勾选 <code>Flag responses matching these expressions</code></li>
+<li>点 Add，填入失败提示：<code>New passwords do not match</code></li>
+</ol>
+<p>![图片说明](&#x2F;images&#x2F;爆破2之Grep - Match.png)</p>
+<p>接下来点 Positions 子标签（Auto&amp;），你会看到请求内容，username 和 password 的值被 § 符号包着。</p>
+<ul>
+<li>点右边的 Clear § 清除所有位置</li>
+<li>只选中 wiener（username 的值），点 Add §</li>
+<li>结果：username&#x3D;§wiener§&amp;password&#x3D;peter</li>
+</ul>
+<p>接下来复制候选密码，然后点击Payloads中的”payload configuration”中的”Paste”粘贴<br>然后直接点击Start attack进行爆破</p>
+<p><img src="/images/%E7%88%86%E7%A0%B42%E4%B9%8B%E7%88%86%E7%A0%B4.png" alt="图片说明"></p>
+<p><img src="/images/%E7%88%86%E7%A0%B42%E7%88%86%E7%A0%B4%E7%BB%93%E6%9E%9C.png" alt="图片说明"></p>
+<p>发现hunter的<code>New passwords do not match</code>被标记，即为正确密码</p>
 
       
     </div>
